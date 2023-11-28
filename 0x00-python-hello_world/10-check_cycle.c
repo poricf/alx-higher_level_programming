@@ -16,16 +16,16 @@ int check_cycle(listint_t *list)
 	{
 		return (0);
 	}
-	i = list;
-	j = list->next;
-	while (j && i && j->next)
+	slow = list;
+	fast = list->next;
+	while (fast && slow && fast->next)
 	{
-		if (j == i)
+		if (slow == fast)
 		{
 			return (1);
 		}
-		i = i->next;
-		j = j->next->next;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
 	return (0);
 }
